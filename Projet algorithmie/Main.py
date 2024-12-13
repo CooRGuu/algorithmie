@@ -1,14 +1,13 @@
-import pandas as pds
-from fonctions.fonctionajout import fonctionajout
-from fonctions.fonctioncreer import fonctioncreer
-from fonctions.fonctionlire import fonctionlire
-from fonctions.fonctionsupp import fonctionsupp
-from fonctions.fonctionrecherchesequentielle import fonctionrecherchesequentielle
-from fonctions.fonctionrecherchebinaire import fonctionrecherchebinaire
-from fonctions.fonctiontriselectionnom import fonctiontriparnom
-from fonctions.fonctiontribulleprix import fonctiontriparprix
-from fonctions.fonctiontriinsertionquantite import fonctiontriparquantite
-from fonctions.fonctiontrirapide import fonctiontrirapide
+from fonctions.fonctionajout import *
+from fonctions.fonctioncreer import *
+from fonctions.fonctionlire import *
+from fonctions.fonctionsupp import *
+from fonctions.fonctionrecherchesequentielle import *
+from fonctions.fonctionrecherchebinaire import *
+from fonctions.fonctiontriselectionnom import *
+from fonctions.fonctiontribulleprix import *
+from fonctions.fonctiontriinsertionquantite import *
+from fonctions.fonctiontrirapide import *
 
 def menuderoulant():
     print("\n--- Menu ---")
