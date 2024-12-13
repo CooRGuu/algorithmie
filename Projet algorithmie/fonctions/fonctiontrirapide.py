@@ -1,6 +1,6 @@
 import pandas as pds
 
-def fonctiontriparquantite(nom_fichier):
+def fonctiontrirapide(nom_fichier):
     try:
         # Lire le fichier CSV avec pandas
         produits_df = pds.read_csv(nom_fichier)
@@ -14,8 +14,26 @@ def fonctiontriparquantite(nom_fichier):
         produits_df['Prix'] = produits_df['Prix'].replace('€', '', regex=True).astype(float)
         produits_df['Quantité'] = produits_df['Quantité'].replace('unités', '', regex=True).astype(int)
 
-        # Trier les produits par la colonne 'Quantité'
-        produits_df = produits_df.sort_values(by='Quantité', ascending=True)
+        # Fonction de partitionnement pour le tri rapide
+        def partition(df, low, high):
+            pivot = df.iloc[high]['Quantité']
+            i = low - 1
+            for j in range(low, high):
+                if df.iloc[j]['Quantité'] < pivot:
+                    i += 1
+                    df.iloc[i], df.iloc[j] = df.iloc[j], df.iloc[i]  # Échanger les lignes
+            df.iloc[i + 1], df.iloc[high] = df.iloc[high], df.iloc[i + 1]
+            return i + 1
+
+        # Fonction de tri rapide
+        def quicksort(df, low, high):
+            if low < high:
+                pi = partition(df, low, high)
+                quicksort(df, low, pi - 1)
+                quicksort(df, pi + 1, high)
+
+        # Appliquer le tri rapide sur les produits par quantité
+        quicksort(produits_df, 0, len(produits_df) - 1)
 
         # Affichage des produits triés par quantité
         print(f"\nProduits triés par quantité dans le fichier '{nom_fichier}' :")

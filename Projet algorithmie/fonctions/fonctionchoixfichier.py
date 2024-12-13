@@ -1,19 +1,17 @@
+import pandas as pds
+
 def fonctionchoixfichier():
-
-    fichiers = []
+    """Choisir un fichier CSV et charger avec pandas."""
     
-    if not fichiers:
-        print("Aucun fichier trouvé.")
-        return None
+    # Demander à l'utilisateur de saisir le nom ou chemin du fichier CSV
+    fichier_choisi = input("Veuillez entrer le chemin du fichier CSV : ")
 
-    print("\n--- Fichiers disponibles ---")
-    for i, fichier in enumerate(fichiers, 1):
-        print(f"{i}. {fichier}")
-
-    choix = input("Choisissez le fichier (numéro) : ")
     try:
-        index = int(choix) - 1
-        return fichiers[index]
-    except (ValueError, IndexError):
-        print("Choix invalide.")
+        # Charger le fichier CSV choisi avec pandas
+        df = pds.read_csv(fichier_choisi)
+        print(f"\nAperçu du fichier '{fichier_choisi}':")
+        print(df.head())  # Affiche les 5 premières lignes du fichier CSV
+        return fichier_choisi  # Retourne le chemin du fichier sélectionné
+    except Exception as e:
+        print(f"Erreur lors du chargement du fichier CSV : {e}")
         return None
