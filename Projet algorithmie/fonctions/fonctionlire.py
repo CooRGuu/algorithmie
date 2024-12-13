@@ -1,10 +1,13 @@
+import pandas as pds
+
 def fonctionlire(nom_fichier):
     try:
-        with open(nom_fichier, 'r', encoding='utf-8') as fichier:
-            contenu = fichier.readlines()
+        # Charger le fichier CSV avec pandas
+        df = pds.read_csv(nom_fichier, encoding='utf-8')
+
         print(f"Contenu du fichier '{nom_fichier}' :")
-        for ligne in contenu:
-            print(ligne.strip())
+        print(df)  # Afficher tout le contenu du DataFrame
+
     except FileNotFoundError:
         print(f"Erreur: Le fichier '{nom_fichier}' est introuvable.")
     except Exception as e:

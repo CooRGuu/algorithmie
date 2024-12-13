@@ -1,3 +1,4 @@
+import pandas as pds
 from fonctions.fonctionajout import fonctionajout
 from fonctions.fonctioncreer import fonctioncreer
 from fonctions.fonctionlire import fonctionlire
@@ -7,6 +8,7 @@ from fonctions.fonctionrecherchebinaire import fonctionrecherchebinaire
 from fonctions.fonctiontriselectionnom import fonctiontriparnom
 from fonctions.fonctiontribulleprix import fonctiontriparprix
 from fonctions.fonctiontriinsertionquantite import fonctiontriparquantite
+from fonctions.fonctiontrirapide import fonctiontrirapide
 
 def menuderoulant():
     print("\n--- Menu ---")
@@ -19,7 +21,8 @@ def menuderoulant():
     print("7- Trier les produits par nom")
     print("8- Trier les produits par prix")
     print("9- Trier les produits par quantité")
-    print("10- Quitter")
+    print("10- Trier les produits par qantité avec le tri rapide")
+    print("11- Quitter")
     
 def main():
     while True: 
@@ -31,7 +34,7 @@ def main():
 
         elif choix == "2":
             print("Option 2 choisie : Ajouter un produit.")
-            nom_fichier = input("Entrez le nom du fichier .txt dans lequel ajouter un produit : ")
+            nom_fichier = input("Entrez le nom du fichier .csv dans lequel ajouter un produit : ")
             print(f"Fichier choisi : {nom_fichier}")
 
             produit = input("Entrez le nom du produit à ajouter : ")
@@ -87,6 +90,9 @@ def main():
             nom_fichier = input('Entrer le nom du fichier à trier : ')
             fonctiontriparquantite(nom_fichier)
         elif choix == "10":
+            nom_fichier = input('Entrer le nom du fichier à trier : ')
+            fonctiontrirapide(nom_fichier)
+        elif choix == "11":
             print("Au revoir !")
             break
 
